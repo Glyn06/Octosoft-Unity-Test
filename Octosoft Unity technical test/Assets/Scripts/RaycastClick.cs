@@ -9,9 +9,6 @@ public class RaycastClick : MonoBehaviour
     public float distance = 1000f;
     public LayerMask layerTarget;
 
-    public delegate void OnHitDelegate();
-    public OnHitDelegate onHitDelegate;
-
     private Camera cam;
     private Ray ray;
     private RaycastHit hit;
@@ -26,13 +23,12 @@ public class RaycastClick : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            ray = new Ray(
-                cam.ScreenToWorldPoint(Input.mousePosition),
-                cam.transform.forward);
+            ray = cam.ScreenPointToRay(Input.mousePosition);
 
             if (Physics.Raycast(ray, out hit, distance, layerTarget))
             {
-                onHitDelegate.Invoke();
+                ClickableObject clickableObject = hit.transform.gameObject.GetComponent<ClickableObject>();
+                clickableObject.OnClick();
             }
         }
     }

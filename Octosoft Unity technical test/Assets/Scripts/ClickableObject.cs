@@ -10,12 +10,6 @@ public class ClickableObject : MonoBehaviour
     public int reduceScoreBy = 1;
     public int increaseScoreBy = 5;
 
-    private void Awake()
-    {
-        RaycastClick raycastClick = FindObjectOfType<RaycastClick>();
-        raycastClick.onHitDelegate += OnClick;
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -23,7 +17,7 @@ public class ClickableObject : MonoBehaviour
 
         if (timer >= despawnTime)
         {
-            ScoreManager.instance.IncreaseScore(reduceScoreBy);
+            ScoreManager.instance.DecreaseScore(reduceScoreBy);
             Destroy(gameObject); //Pool system
         }
     }
