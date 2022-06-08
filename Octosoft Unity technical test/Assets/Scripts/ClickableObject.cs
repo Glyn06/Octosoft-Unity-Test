@@ -23,14 +23,14 @@ public class ClickableObject : MonoBehaviour
 
         if (timer >= despawnTime)
         {
-            //Subtract points
+            ScoreManager.instance.IncreaseScore(reduceScoreBy);
             Destroy(gameObject); //Pool system
         }
     }
 
     public virtual void OnClick()
     {
-        //add points
+        ScoreManager.instance.IncreaseScore(increaseScoreBy);
         Destroy(gameObject); //Pool system
     }
 }
