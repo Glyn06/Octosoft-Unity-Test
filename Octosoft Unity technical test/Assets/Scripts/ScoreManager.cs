@@ -23,13 +23,13 @@ public class ScoreManager : MonoBehaviour
     public void IncreaseScore(int value)
     {
         score += value;
-        GameplayUIManager.instance.UpdateUI();
+        GameplayUIManager.instance.UpdateScoreUI();
     }
 
     public void DecreaseScore(int value)
     {
         score -= value;
-        GameplayUIManager.instance.UpdateUI();
+        GameplayUIManager.instance.UpdateScoreUI();
     }
     #endregion
 }

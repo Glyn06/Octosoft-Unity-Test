@@ -5,6 +5,8 @@ using TMPro;
 
 public class GameplayUIManager : MonoBehaviour
 {
+    public Timer timerRef;
+
     #region Singleton
     public static GameplayUIManager instance;
     private void Awake()
@@ -16,10 +18,20 @@ public class GameplayUIManager : MonoBehaviour
 
     #region UIManagment
     public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI timerText;
 
-    public void UpdateUI()
+    public void UpdateScoreUI()
     {
         scoreText.text = "Score: " + ScoreManager.instance.Score.ToString("000");
+    }
+    public void UpdateTimerUI()
+    {
+        timerText.text = "Time" + "\n" + timerRef.currentMinutes + ":" + timerRef.currentSeconds.ToString("00");
+    }
+
+    private void Update()
+    {
+        UpdateTimerUI();
     }
     #endregion
 }
