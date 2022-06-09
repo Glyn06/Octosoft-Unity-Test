@@ -19,7 +19,7 @@ public class GameplayUIManager : MonoBehaviour
 
     public void UpdateUI()
     {
-        scoreText.text = "Score: " + ScoreManager.instance.Score.ToString("0000");
+        scoreText.text = "Score: " + ScoreManager.instance.Score.ToString("000");
     }
     #endregion
 }
