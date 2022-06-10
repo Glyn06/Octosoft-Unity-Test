@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ScoreManager : MonoBehaviour
 {
@@ -20,10 +21,16 @@ public class ScoreManager : MonoBehaviour
         get { return score; }
     }
 
+    public int targetScore;
+    public UnityEvent onReachTargetScore;
+
     public void IncreaseScore(int value)
     {
         score += value;
         GameplayUIManager.instance.UpdateScoreUI();
+
+        if (score >= targetScore)
+            onReachTargetScore.Invoke();
     }
 
     public void DecreaseScore(int value)

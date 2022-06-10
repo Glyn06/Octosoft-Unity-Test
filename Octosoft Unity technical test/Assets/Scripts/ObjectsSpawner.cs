@@ -33,11 +33,11 @@ public class ObjectsSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        minimunSpawnTime = GameManager.instance.GetDifficulty().minimunSpawnTime;
-        maximunSpawnTime = GameManager.instance.GetDifficulty().maximunSpawnTime;
+        minimunSpawnTime = PersistanceData.instance.GetDifficulty().minimunSpawnTime;
+        maximunSpawnTime = PersistanceData.instance.GetDifficulty().maximunSpawnTime;
 
-        minObjectsOnScreen = GameManager.instance.GetDifficulty().minObjectsOnScreen;
-        maxObjectsOnScreen = GameManager.instance.GetDifficulty().maxObjectsOnScreen;
+        minObjectsOnScreen = PersistanceData.instance.GetDifficulty().minObjectsOnScreen;
+        maxObjectsOnScreen = PersistanceData.instance.GetDifficulty().maxObjectsOnScreen;
 
         timeNextSpawn = Random.Range(minimunSpawnTime, maximunSpawnTime);
         nextObjects = spawner.GenerateRandomIndexes(maxObjectsOnScreen);

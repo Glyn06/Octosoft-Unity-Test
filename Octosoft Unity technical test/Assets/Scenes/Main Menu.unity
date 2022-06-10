@@ -395,6 +395,49 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 409055497}
   m_CullTransparentMesh: 0
+--- !u!1 &467609143
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 467609145}
+  - component: {fileID: 467609144}
+  m_Layer: 0
+  m_Name: DifficultyManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &467609144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 467609143}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6b0e474360ca454c8d8cf40b90344c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &467609145
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 467609143}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1131.8059, y: 464.59167, z: -86.18318}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &471824278
 GameObject:
   m_ObjectHideFlags: 0
@@ -477,7 +520,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1817543817}
+      - m_Target: {fileID: 467609144}
         m_MethodName: SetDifficulty
         m_Mode: 2
         m_Arguments:
@@ -489,7 +532,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1817543817}
+      - m_Target: {fileID: 751140806}
         m_MethodName: LoadScene
         m_Mode: 5
         m_Arguments:
@@ -1403,7 +1446,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1817543817}
+      - m_Target: {fileID: 467609144}
         m_MethodName: SetDifficulty
         m_Mode: 2
         m_Arguments:
@@ -1415,7 +1458,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1817543817}
+      - m_Target: {fileID: 751140806}
         m_MethodName: LoadScene
         m_Mode: 5
         m_Arguments:
@@ -1463,6 +1506,49 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 743714963}
   m_CullTransparentMesh: 0
+--- !u!1 &751140805
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 751140807}
+  - component: {fileID: 751140806}
+  m_Layer: 0
+  m_Name: SceneManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &751140806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 751140805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c73c2f9b0387cd447abaae2e3420122c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &751140807
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 751140805}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1131.8059, y: 464.59167, z: -86.18318}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &768145562
 GameObject:
   m_ObjectHideFlags: 0
@@ -1678,7 +1764,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1817543817}
+      - m_Target: {fileID: 467609144}
         m_MethodName: SetDifficulty
         m_Mode: 2
         m_Arguments:
@@ -1690,7 +1776,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1817543817}
+      - m_Target: {fileID: 751140806}
         m_MethodName: LoadScene
         m_Mode: 5
         m_Arguments:
@@ -4183,7 +4269,7 @@ GameObject:
   - component: {fileID: 1817543818}
   - component: {fileID: 1817543817}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: PersistanceData
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4201,6 +4287,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eece3be113836b143b707fa92487a808, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defaultDifficulty: {fileID: 11400000, guid: e5481a0bc33a3d1428035fee3a8fb62e, type: 2}
 --- !u!4 &1817543818
 Transform:
   m_ObjectHideFlags: 0
