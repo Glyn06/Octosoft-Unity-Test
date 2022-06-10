@@ -5,13 +5,6 @@ using UnityEditor;
 using UnityEngine;
 using System;
 
-public enum Difficulty
-{
-    Easy = 0,
-    Normal = 1,
-    Hard = 2
-}
-
 public class GameManager : MonoBehaviour
 {
     #region Singleton
@@ -32,26 +25,20 @@ public class GameManager : MonoBehaviour
 
     #region Difficulty
     private Difficulty difficulty;
+    public Difficulty defaultDifficulty;
 
-    public void SetDifficulty(int newDifficulty)
+    public void SetDifficulty(Difficulty newDifficulty)
     {
-        switch ((Difficulty)newDifficulty)
-        {
-            case Difficulty.Easy:
-                difficulty = Difficulty.Easy;
-                break;
-            case Difficulty.Normal:
-                difficulty = Difficulty.Normal;
-                break;
-            case Difficulty.Hard:
-                difficulty = Difficulty.Hard;
-                break;
-            default:
-                difficulty = Difficulty.Normal;
-                break;
-        }
+        difficulty = newDifficulty;
+    }
 
-        Debug.Log("Difficulty set to: " + difficulty.ToString());
+    public Difficulty GetDifficulty()
+    {
+        if (difficulty != null)
+            return difficulty;
+        else
+            return defaultDifficulty;
+        
     }
     #endregion
     #region SceneManagement

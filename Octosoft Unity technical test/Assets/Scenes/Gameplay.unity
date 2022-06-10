@@ -385,10 +385,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawner: {fileID: 343048705}
-  minimunSpawnTime: 1
-  maximunSpawnTime: 2
-  minObjectsOnScreen: 10
-  maxObjectsOnScreen: 15
 --- !u!1 &435943741
 GameObject:
   m_ObjectHideFlags: 0
@@ -707,8 +703,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e8b91864e81159428577231ad2c7a41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minutes: 1
-  seconds: 5
+  minutes: 2
+  seconds: 0
   isRunning: 1
   currentSeconds: 0
   currentMinutes: 0
@@ -758,6 +754,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eece3be113836b143b707fa92487a808, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defaultDifficulty: {fileID: 11400000, guid: e5481a0bc33a3d1428035fee3a8fb62e, type: 2}
 --- !u!4 &1194756512
 Transform:
   m_ObjectHideFlags: 0
