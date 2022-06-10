@@ -8,7 +8,8 @@ public class Timer : MonoBehaviour
     public int minutes;
     public int seconds;
 
-    private float timer;
+    [SerializeField] private bool isRunning;
+
     [HideInInspector] public float currentSeconds;
     [HideInInspector] public int currentMinutes;
 
@@ -22,18 +23,24 @@ public class Timer : MonoBehaviour
 
     private void Update()
     {
-        currentSeconds -= Time.deltaTime;
-        Mathf.RoundToInt(currentSeconds);
-
-        if (currentSeconds <= 0)
+        if (isRunning)
         {
-            currentMinutes--;
-            currentSeconds = 60;
-        }
+            currentSeconds -= Time.deltaTime;
+            Mathf.RoundToInt(currentSeconds);
 
-        if (currentMinutes <= 0 && currentSeconds <= 0)
-        {
-            onComplete.Invoke();
+            if (currentSeconds <= 0)
+            {
+                if (currentMinutes <= 0)
+                {
+                    onComplete.Invoke();
+                    isRunning = false;
+                }
+                else
+                {
+                    currentMinutes--;
+                    currentSeconds = 59;
+                }
+            }
         }
     }
 }

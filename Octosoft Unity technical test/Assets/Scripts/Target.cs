@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class Target : ClickableObject
 {
+    public int objectIndex;
+    public int quantity;
+
     public override void OnClick()
     {
         base.OnClick();
 
-        Debug.Log("3 coins bro trust me");
-        //Next three items are coins
+        ObjectsSpawner.instance.SetNextObject(quantity, objectIndex);
     }
 }

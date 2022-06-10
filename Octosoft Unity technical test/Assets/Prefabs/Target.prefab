@@ -110,3 +110,5 @@ MonoBehaviour:
   despawnTime: 5
   reduceScoreBy: 10
   increaseScoreBy: 0
+  objectIndex: 0
+  quantity: 3

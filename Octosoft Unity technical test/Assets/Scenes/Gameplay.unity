@@ -707,8 +707,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e8b91864e81159428577231ad2c7a41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minutes: 2
-  seconds: 0
+  minutes: 1
+  seconds: 5
+  isRunning: 1
   currentSeconds: 0
   currentMinutes: 0
   onComplete:
