@@ -13,7 +13,7 @@ public class Shield : ClickableObject
 
         if (timesClicked >= timesToClick)
         {
-            ScoreManager.instance.IncreaseScore(increaseScoreBy);
+            ScoreManager.instance.IncreasePlayerScore(increaseScoreBy);
             Destroy(gameObject); //pool system
         }
     }

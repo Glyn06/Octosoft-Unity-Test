@@ -27,6 +27,7 @@ public class RaycastClick : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit, distance, layerTarget))
             {
+                Debug.Log("FiredRay");
                 ClickableObject clickableObject = hit.transform.gameObject.GetComponent<ClickableObject>();
                 clickableObject.OnClick();
             }

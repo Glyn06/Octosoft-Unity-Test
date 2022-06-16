@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Mirror;
 
-public class ClickableObject : MonoBehaviour
+public class ClickableObject : NetworkBehaviour
 {
     public float despawnTime = 5f;
     private float timer;
@@ -10,31 +11,34 @@ public class ClickableObject : MonoBehaviour
     public int reduceScoreBy = 1;
     public int increaseScoreBy = 5;
 
-    private void Awake()
-    {
-        ObjectsSpawner.instance.IncreaseObjectsOnScreenCount();
-    }
-
     // Update is called once per frame
     void Update()
     {
         timer += Time.deltaTime;
 
-        if (timer >= despawnTime)
+        if (timer >= despawnTime && hasAuthority)
         {
-            ScoreManager.instance.DecreaseScore(reduceScoreBy);
+            ScoreManager.instance.DecreasePlayerScore(reduceScoreBy);
             Destroy(gameObject); //Pool system
         }
     }
 
     public virtual void OnClick()
     {
-        ScoreManager.instance.IncreaseScore(increaseScoreBy);
-        Destroy(gameObject); //Pool system
+        if (hasAuthority)
+        {
+            Debug.Log("Grande Mostro");
+            ScoreManager.instance.IncreasePlayerScore(increaseScoreBy);
+            Destroy(gameObject); //Pool system
+        }
+        else
+        {
+            Debug.Log("Chhh que toca?");
+        }
     }
 
     public void OnDestroy()
     {
-        ObjectsSpawner.instance.DecreaseObjectsOnScreenCount();
+        //ObjectsSpawner.instance.DecreaseObjectsOnScreenCount();
     }
 }

@@ -11,6 +11,6 @@ public class Target : ClickableObject
     {
         base.OnClick();
 
-        ObjectsSpawner.instance.SetNextObject(quantity, objectIndex);
+        //ObjectsSpawner.instance.SetNextObject(quantity, objectIndex);
     }
 }

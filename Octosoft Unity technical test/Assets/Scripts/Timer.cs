@@ -2,18 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using Mirror;
+using System;
+using TMPro;
 
-public class Timer : MonoBehaviour
+public class Timer : NetworkBehaviour
 {
     public int minutes;
     public int seconds;
 
-    [SerializeField] private bool isRunning;
+    [SyncVar] [SerializeField] private bool isRunning;
 
-    [HideInInspector] public float currentSeconds;
-    [HideInInspector] public int currentMinutes;
+    [SyncVar(hook = nameof(HandleCurrentSecondsChange))] [SerializeField] private float currentSeconds;
+    [SyncVar(hook = nameof(HandleCurrentMinutesChange))] [SerializeField] private int currentMinutes;
 
-    public UnityEvent onComplete;
+    [SerializeField] private TextMeshProUGUI timerText;
+
+    public event Action Oncomplete;
 
     private void Awake()
     {
@@ -32,7 +37,7 @@ public class Timer : MonoBehaviour
             {
                 if (currentMinutes <= 0)
                 {
-                    onComplete.Invoke();
+                    Oncomplete?.Invoke();
                     isRunning = false;
                 }
                 else
@@ -42,5 +47,25 @@ public class Timer : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void HandleCurrentSecondsChange(float oldValue, float newValue)
+    {
+        UpdateUI();
+    }
+
+    public void HandleCurrentMinutesChange(int oldValue, int newValue)
+    {
+        UpdateUI();
+    }
+
+    public void UpdateUI()
+    {
+        timerText.text = "Time" + "\n" + currentMinutes + ":" + currentSeconds.ToString("00");
+    }
+
+    public override void OnStartServer()
+    {
+        isRunning = true;
     }
 }

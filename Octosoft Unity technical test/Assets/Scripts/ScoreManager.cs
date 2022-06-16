@@ -2,41 +2,41 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using Mirror;
+using System;
 
-public class ScoreManager : MonoBehaviour
+public class ScoreManager : NetworkBehaviour
 {
-    #region Singleton
+    public int targetScore;
+
+    public static event Action OnReachTargetScore;
+
+    private NetworkManagerCTW room;
+    private NetworkManagerCTW Room
+    {
+        get
+        {
+            if (room != null) { return room; }
+            return room = NetworkManager.singleton as NetworkManagerCTW;
+        }
+    }
+
     public static ScoreManager instance;
     private void Awake()
     {
         if (instance == null)
+        {
             instance = this;
+        }
     }
-    #endregion
 
-    #region ScoreManagment
-    private int score;
-    public int Score
+    public void IncreasePlayerScore(int score)
     {
-        get { return score; }
+        Room.HandleIncreaseScore(score);
     }
 
-    public int targetScore;
-    public UnityEvent onReachTargetScore;
-
-    public void IncreaseScore(int value)
+    public void DecreasePlayerScore(int score)
     {
-        score += value;
-        GameplayUIManager.instance.UpdateScoreUI();
-
-        if (score >= targetScore)
-            onReachTargetScore.Invoke();
+        Room.HandleDecreaseScore(score);
     }
-
-    public void DecreaseScore(int value)
-    {
-        score -= value;
-        GameplayUIManager.instance.UpdateScoreUI();
-    }
-    #endregion
 }

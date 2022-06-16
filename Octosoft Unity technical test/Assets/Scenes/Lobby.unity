@@ -1695,17 +1695,28 @@ MonoBehaviour:
   serverTickRate: 30
   offlineScene: 
   onlineScene: Assets/Scenes/Lobby.unity
-  transport: {fileID: 0}
+  transport: {fileID: 768992991}
   networkAddress: localhost
   maxConnections: 2
   authenticator: {fileID: 0}
-  playerPrefab: {fileID: 889390218150490753, guid: c10e8566e3d8cc04982471df98e0b351,
+  playerPrefab: {fileID: 7502554968823335876, guid: 8037b4afd4e7bfe459be401d751a519f,
     type: 3}
   autoCreatePlayer: 1
   playerSpawnMethod: 0
   spawnPrefabs: []
   menuScene: Assets/Scenes/Lobby.unity
+  gameScene: Gameplay
   roomPlayerPrefab: {fileID: 889390218150490766, guid: c10e8566e3d8cc04982471df98e0b351,
+    type: 3}
+  gamePlayerPrefab: {fileID: 197030668300200409, guid: d5b7c5ac467396f4299b101564af07ab,
+    type: 3}
+  multiPlayerSpawn: {fileID: 6449815498889215332, guid: b7331689b1bbfe34eb2d9d8f9bb3a20f,
+    type: 3}
+  timerPrefab: {fileID: 258217463473515659, guid: b16d5d34cd5048f40bc687243fb8406b,
+    type: 3}
+  spawnerPrefab: {fileID: 143959556828158404, guid: 43321187db947c248abc01ef5f5c8d01,
+    type: 3}
+  scoreManagerPrefab: {fileID: 4952039345559970185, guid: 9426ba915b1c89840968a6384549cb81,
     type: 3}
 --- !u!4 &768992993
 Transform:

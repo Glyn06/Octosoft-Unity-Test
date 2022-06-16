@@ -3,26 +3,45 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using Mirror;
 
-public class GameObjectSpawner : MonoBehaviour
+public class GameObjectSpawner : NetworkBehaviour
 {
     [SerializeField] protected List<GameObject> objectsToSpawn;
     [SerializeField] protected Vector3 spawnArea;
 
-    public void SpawnRandomObject()
+    private NetworkManagerCTW room;
+    private NetworkManagerCTW Room
+    {
+        get
+        {
+            if (room != null) { return room; }
+            return room = NetworkManager.singleton as NetworkManagerCTW;
+        }
+    }
+
+    [Server]
+    public void CmdSpawnRandomObject()
     {
         int randomIndex = Random.Range(0, objectsToSpawn.Count);
 
         Vector3 randomPosition = GenerateRandomPositionInArea();
 
-        Instantiate(objectsToSpawn[randomIndex], randomPosition, objectsToSpawn[randomIndex].transform.rotation);
+        GameObject randomObjectInstance;
+        randomObjectInstance = Instantiate(objectsToSpawn[randomIndex], randomPosition, objectsToSpawn[randomIndex].transform.rotation);
+
+        Room.HandleSpawn(randomObjectInstance);
     }
 
-    public void SpawnObjectByIndex(int index)
+    [Server]
+    public void CmdSpawnObjectByIndex(int index)
     {
         Vector3 randomPosition = GenerateRandomPositionInArea();
 
-        Instantiate(objectsToSpawn[index], randomPosition, objectsToSpawn[index].transform.rotation);
+        GameObject objectInstance;
+        objectInstance = Instantiate(objectsToSpawn[index], randomPosition, objectsToSpawn[index].transform.rotation);
+
+        Room.HandleSpawn(objectInstance);
     }
 
     private Vector3 GenerateRandomPositionInArea()
@@ -32,7 +51,8 @@ public class GameObjectSpawner : MonoBehaviour
                                                 Random.Range(-spawnArea.z / 2, spawnArea.z / 2));
     }
 
-    public int[] GenerateRandomIndexes(int count) {
+    public int[] GenerateRandomIndexes(int count)
+    {
         int[] indexes = new int[count];
 
         for (int i = 0; i < count; i++)

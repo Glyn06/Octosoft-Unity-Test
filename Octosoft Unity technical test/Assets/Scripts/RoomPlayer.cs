@@ -22,6 +22,8 @@ public class RoomPlayer : NetworkBehaviour
     private bool isLeader = false;
     public bool IsLeader
     {
+        get { return isLeader; }
+
         set
         {
             isLeader = value;
@@ -119,5 +121,7 @@ public class RoomPlayer : NetworkBehaviour
     public void CmdStartGame()
     {
         if (Room.roomPlayers[0].connectionToClient != connectionToClient) { return; }
+
+        Room.StartGame();
     }
 }

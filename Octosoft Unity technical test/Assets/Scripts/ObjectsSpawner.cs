@@ -8,8 +8,8 @@ public class ObjectsSpawner : MonoBehaviour
 {
     public GameObjectSpawner spawner;
 
-    private float minimunSpawnTime;
     private float maximunSpawnTime;
+    private float minimunSpawnTime;
 
     private int minObjectsOnScreen;
     private int maxObjectsOnScreen;
@@ -20,15 +20,6 @@ public class ObjectsSpawner : MonoBehaviour
 
     private int[] nextObjects;
     private int currentSpawnIndex;
-
-    #region Singleton
-    public static ObjectsSpawner instance;
-    private void Awake()
-    {
-        if (instance == null)
-            instance = this;
-    }
-    #endregion
 
     // Start is called before the first frame update
     void Start()
@@ -55,7 +46,10 @@ public class ObjectsSpawner : MonoBehaviour
             if (objectsOnScreen < minObjectsOnScreen)
                 SpawnUntilMinObjects();
             else if (objectsOnScreen < maxObjectsOnScreen)
-                spawner.SpawnObjectByIndex(nextObjects[currentSpawnIndex]);
+            {
+                spawner.CmdSpawnObjectByIndex(nextObjects[currentSpawnIndex]);
+                IncreaseObjectsOnScreenCount();
+            }
 
             timer = 0;
             currentSpawnIndex++;
@@ -77,8 +71,10 @@ public class ObjectsSpawner : MonoBehaviour
         {
             CheckIndexOverload();
 
-            spawner.SpawnObjectByIndex(nextObjects[currentSpawnIndex]);
+            spawner.CmdSpawnObjectByIndex(nextObjects[currentSpawnIndex]);
             currentSpawnIndex++;
+
+            IncreaseObjectsOnScreenCount();
         }
     }
 
